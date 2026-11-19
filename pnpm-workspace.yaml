@@ -4,3 +4,7 @@ packages:
 
 catalog:
   typescript: ~6.0.3
+
+allowBuilds:
+  esbuild: true
+  '@scarf/scarf': false # телеметрия swagger-ui, не нужна

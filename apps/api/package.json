@@ -1,0 +1,41 @@
+{
+  "name": "@swarmer-keeper/api",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nest build",
+    "dev": "nest start --watch",
+    "dev:worker": "tsx watch src/worker.ts",
+    "start": "node dist/main.js",
+    "start:worker": "node dist/worker.js",
+    "openapi": "tsx src/openapi.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@nestjs/common": "^12.0.1",
+    "@nestjs/core": "^12.0.1",
+    "@nestjs/platform-express": "^12.0.1",
+    "@nestjs/swagger": "^12.1.2",
+    "pg-boss": "^12.38.2",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.1"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^12.0.0",
+    "@nestjs/schematics": "^12.0.0",
+    "@nestjs/testing": "^12.0.1",
+    "@swarmer-keeper/tsconfig": "workspace:*",
+    "@types/express": "^5.0.0",
+    "@types/node": "^26.0.0",
+    "@types/supertest": "^7.0.0",
+    "eslint": "^10.0.0",
+    "supertest": "^7.0.0",
+    "tsx": "^4.23.15",
+    "typescript": "catalog:",
+    "vite": "^8.0.0",
+    "vitest": "^4.1.2"
+  }
+}
