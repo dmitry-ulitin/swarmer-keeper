@@ -1,4 +1,6 @@
-> При исполнении этот документ сохраняется в `docs/superpowers/specs/2026-11-19-monorepo-scaffold-design.md` и коммитится; дальше — план через superpowers:writing-plans.
+# Каркас монорепо Swarmer Keeper — дизайн
+
+19 ноября 2026 · одобрено
 
 ## Context
 Проект пустой (только `CLAUDE.md`, `docs/architecture.md`, `.claude/skills`; git нет). Нужен рабочий pnpm-монорепо по структуре из `CLAUDE.md`, чтобы сразу писать модули из архитектуры. Корневые `pnpm dev / test / lint / gen:client` должны реально работать, а цепочка «изменил API → перегенерировал клиент → поправил web» — исполняться одной командой.
