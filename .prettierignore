@@ -1,0 +1,9 @@
+pnpm-lock.yaml
+packages/api-client/src
+apps/api/openapi.json
+.superpowers
+dist
+coverage
+.angular
+.claude
+docs
