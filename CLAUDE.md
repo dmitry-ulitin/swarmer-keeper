@@ -11,6 +11,7 @@
 
 ## Команды (из корня)
 
+- docker compose up -d --wait — Postgres (:5433), Garage S3 (:9000), Keycloak (:8080); нужен для pnpm dev
 - pnpm dev / pnpm test / pnpm lint
 - pnpm gen:client — после любых изменений API-контракта
 
