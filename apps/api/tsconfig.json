@@ -1,0 +1,14 @@
+{
+  "extends": "@swarmer-keeper/tsconfig/node.json",
+  "compilerOptions": {
+    "resolvePackageJsonExports": true,
+    "isolatedModules": true,
+    "declaration": true,
+    "removeComments": true,
+    "outDir": "./dist",
+    "rootDir": ".",
+    "incremental": true,
+    "strictPropertyInitialization": false,
+    "types": ["vitest/globals", "node"]
+  }
+}

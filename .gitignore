@@ -3,3 +3,8 @@ dist/
 .env
 .angular/
 coverage/
+*.log
+.DS_Store
+tmp/
+.superpowers/
+*.tsbuildinfo

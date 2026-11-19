@@ -1,0 +1,16 @@
+<main class="home">
+  <h1>Swarmer Keeper</h1>
+  <p role="status" aria-live="polite">
+    @switch (status()) {
+      @case ('ok') {
+        <span tuiBadge appearance="positive" size="l">API: работает</span>
+      }
+      @case ('down') {
+        <span tuiBadge appearance="negative" size="l">API: недоступен</span>
+      }
+      @default {
+        <span tuiBadge appearance="neutral" size="l">Проверяем API…</span>
+      }
+    }
+  </p>
+</main>
