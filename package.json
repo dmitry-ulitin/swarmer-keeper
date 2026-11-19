@@ -6,6 +6,7 @@
     "node": ">=26"
   },
   "scripts": {
+    "dev": "concurrently -n api,worker,web -c blue,magenta,green \"pnpm --filter @swarmer-keeper/api dev\" \"pnpm --filter @swarmer-keeper/api dev:worker\" \"pnpm --filter @swarmer-keeper/web start\"",
     "test": "pnpm -r test",
     "lint": "pnpm -r lint",
     "format": "prettier --write .",
@@ -13,6 +14,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.0",
+    "concurrently": "^10.0.7",
     "eslint": "^10.0.0",
     "globals": "^17.14.0",
     "prettier": "^3.10.1",
