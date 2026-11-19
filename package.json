@@ -8,7 +8,8 @@
   "scripts": {
     "test": "pnpm -r test",
     "lint": "pnpm -r lint",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "gen:client": "pnpm --filter @swarmer-keeper/api openapi && pnpm --filter @swarmer-keeper/api-client generate"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.0",
