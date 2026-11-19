@@ -1,10 +1,20 @@
 import { pathToFileURL } from 'node:url';
 import { PgBoss } from 'pg-boss';
-import { type AppConfig, loadConfig } from './config.js';
+import { type AppConfig, loadConfig, ROOT_ENV_PATH, withEnvFile } from './config.js';
+
+/**
+ * Создаёт pg-boss с обработчиком 'error'. Без него фоновая ошибка обслуживания
+ * (например, Postgres перезапустился) выбрасывается как uncaught и роняет воркер.
+ */
+export function createBoss(databaseUrl: string): PgBoss {
+  const boss = new PgBoss(databaseUrl);
+  boss.on('error', (error) => console.error('pg-boss:', error));
+  return boss;
+}
 
 /** Подключает pg-boss к PostgreSQL. Обработчики задач добавит модуль jobs. */
 export async function startWorker(config: AppConfig): Promise<PgBoss> {
-  const boss = new PgBoss(config.databaseUrl);
+  const boss = createBoss(config.databaseUrl);
   try {
     await boss.start();
   } catch (error) {
@@ -15,7 +25,7 @@ export async function startWorker(config: AppConfig): Promise<PgBoss> {
 }
 
 async function main(): Promise<void> {
-  const boss = await startWorker(loadConfig(process.env));
+  const boss = await startWorker(loadConfig(withEnvFile(ROOT_ENV_PATH, process.env)));
   console.log('pg-boss started');
   const shutdown = async () => {
     await boss.stop();

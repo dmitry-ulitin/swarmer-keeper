@@ -11,7 +11,11 @@ function render(response: Observable<HealthDto>) {
   });
   const fixture = TestBed.createComponent(Home);
   fixture.detectChanges();
-  return { component: fixture.componentInstance, text: () => fixture.nativeElement.textContent };
+  return {
+    fixture,
+    component: fixture.componentInstance,
+    text: () => fixture.nativeElement.textContent,
+  };
 }
 
 describe('Home', () => {
@@ -31,5 +35,18 @@ describe('Home', () => {
     const { component, text } = render(new Subject<HealthDto>());
     expect(component.status()).toBe('loading');
     expect(text()).toContain('Проверяем API…');
+  });
+
+  it('показывает «API: недоступен», если API не ответил за 5 секунд', () => {
+    vi.useFakeTimers();
+    try {
+      const { component, text, fixture } = render(new Subject<HealthDto>());
+      vi.advanceTimersByTime(5_000);
+      fixture.detectChanges();
+      expect(component.status()).toBe('down');
+      expect(text()).toContain('API: недоступен');
+    } finally {
+      vi.useRealTimers();
+    }
   });
 });

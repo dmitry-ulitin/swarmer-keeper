@@ -6,10 +6,11 @@
   "scripts": {
     "build": "nest build",
     "dev": "nest start --watch",
-    "dev:worker": "tsx watch src/worker.ts",
+    "dev:worker": "pnpm run:ts --watch src/worker.ts",
     "start": "node dist/main.js",
     "start:worker": "node dist/worker.js",
-    "openapi": "tsx src/openapi.ts",
+    "run:ts": "node --import @swc-node/register/esm-register",
+    "openapi": "pnpm run:ts src/openapi.ts",
     "test": "vitest run",
     "test:watch": "vitest",
     "lint": "eslint ."
@@ -28,12 +29,13 @@
     "@nestjs/schematics": "^12.0.0",
     "@nestjs/testing": "^12.0.1",
     "@swarmer-keeper/tsconfig": "workspace:*",
+    "@swc-node/register": "^1.12.1",
+    "@swc/core": "^1.16.22",
     "@types/express": "^5.0.0",
     "@types/node": "^26.0.0",
     "@types/supertest": "^7.0.0",
     "eslint": "^10.0.0",
     "supertest": "^7.0.0",
-    "tsx": "^4.23.15",
     "typescript": "catalog:",
     "vite": "^8.0.0",
     "vitest": "^4.1.2"
